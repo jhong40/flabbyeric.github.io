@@ -1,1 +1,1 @@
-# flabbyeric.github.io
+# funstatic

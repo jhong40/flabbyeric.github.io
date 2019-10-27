@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="piano.JPG">
+<style>
+	#disp{
+		width: 500;
+		height: 300;
+		margin: 50px auto;
+		padding-top: 80px;
+		text-align: center;
+		font-size: 200px;
+	}
+	#pie{
+		margin: auto;
+		width: 200px;
+		height: 50px;
+	}
+	#poop{
+		width: 200px;
+		height: 100px;
+		border-radius: 10px;
+		font-size: 40px;
+	}
+	body{
+		background-color: CadetBlue;
+	}
+</style>
+</head>
+<body>
+<div id="disp"><span id="cheese">40</span>:<span id="yogurt">00</span></div>
+<div id="pie"><button id="poop" onclick="startTimer()">Start</button></div>
+<h1>this is a balalaxxxxyyyy</h1>
+<script>
+
+var timerHandle;
+function startTimer(){
+    var flag = document.getElementById("poop").innerHTML;
+    if (flag=="Start") {
+        document.getElementById("poop").innerHTML="Pause";
+        var m = document.getElementById("cheese");
+        timerHandle  = setInterval(mere, 1000);
+    }
+    if (flag=="Pause") {
+    	clearInterval(timerHandle);
+        document.getElementById("poop").innerHTML="Continue";
+    }
+    if (flag=="Continue"){
+        document.getElementById("poop").innerHTML="Pause";
+        timerHandle  = setInterval(mere, 1000);
+    }
+}
+function mere(){
+	var Q = document.getElementById("yogurt").innerHTML;
+	var yOlO = document.getElementById("cheese").innerHTML;
+	var OverPowered = (yOlO*60)+(Q*1);
+	OverPowered = OverPowered - 1;
+	if(OverPowered <= 0){
+		clearInterval(timerHandle);
+		document.getElementById("cheese") = "00";
+		document.getElementById("yogurt") = "00";
+		document.getElementById("poop") = "Done, Refresh Now!!!";
+	}
+	else{
+		Q = OverPowered%60;
+		yOlO = (OverPowered - Q)/60;
+		if(Q<10){
+			Q = "0" + Q;
+		}
+		if(yOlO<10){
+			yOlO = "0" +yOlO;
+		}
+		document.getElementById("cheese").innerHTML=yOlO;
+		document.getElementById("yogurt").innerHTML=Q;
+	}
+}
+
+iosSleepPreventInterval = setInterval(function () {
+    window.location.href = "http://www.yahoo.com";
+    console.log("redirect");
+    window.setTimeout(function () {
+        window.stop()
+        console.log("redirect cancled");
+    }, 0);
+
+}, 120000);
+
+
+
+</script>
+</body>
+</html>

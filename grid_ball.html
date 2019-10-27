@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="http://www.brightersidenow.com/wp-content/uploads/2015/11/ripple2.jpg">
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="400"
+style="border:10px solid #c3c3c3;">
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var mw=canvas.width;
+var mh=canvas.height;
+var hobo = 0;
+var bobo = 0;
+var x = Math.random()*4;
+var y = Math.random()*4;
+var g = Math.random()*200;
+var h = Math.random()*200;
+var a = Math.random()*255;
+var aa = a.toFixed(0);
+var b = Math.random()*255;
+var bb = b.toFixed(0);
+var c = Math.random()*255;
+var cc = c.toFixed(0);
+var r = Math.random()*60;
+
+var xx = Math.random()*6;
+var yy = Math.random()*6;
+var gg = Math.random()*500;
+var hh = Math.random()*400;
+var aaa = Math.random()*255;
+var aaaa = aaa.toFixed(0);
+var bbb = Math.random()*255;
+var bbbb = bbb.toFixed(0);
+var ccc = Math.random()*255;
+var cccc = ccc.toFixed(0);
+var rr = Math.random()*60;
+
+
+function drawgrid() {
+
+	ctx.font = "30px Arial";
+	ctx.fillStyle = "red";
+ctx.textAlign = "center";
+ctx.strokeStyle = "lightgray";
+ctx.fillText("Happy Birthday, Emily ! ", canvas.width/2, canvas.height/2);
+
+ 		while(hobo<=mh){
+		ctx.beginPath();
+		ctx.moveTo(0,hobo);
+		ctx.lineTo(mw,hobo);
+		ctx.lineWidth=0.5;
+		ctx.stroke();
+		hobo=hobo+10;
+	}
+	hobo = 0;
+		while(bobo<=mw){
+		ctx.beginPath();
+		ctx.moveTo(bobo,0);
+		ctx.lineTo(bobo,mh);
+		ctx.lineWidth=0.5;
+		ctx.stroke();
+		bobo=bobo+10;
+	}
+	bobo = 0;
+}
+var move = setInterval(moveBall, 1);
+var move2 = setInterval(moveBall2,1);
+function moveBall(){
+	ctx.clearRect(0,0,600,400);
+	drawgrid();
+    ctx.strokeStyle="black";
+
+	ctx.beginPath();
+	ctx.arc(gg+xx,hh+yy,rr,0,2*Math.PI);
+	ctx.lineWidth=3;
+	ctx.fillStyle="rgb("+aaaa+","+bbbb+","+cccc+")";
+	ctx.fill();
+	ctx.stroke();
+	ctx.strokeStyle="black";
+	gg = gg+xx;
+	hh = hh+yy;
+
+	if(gg+xx+rr==g+x+r){
+		x=Math.random()*-6;
+		y=Math.random()*6;
+	}
+
+	if(gg+yy+rr==g+y+r){
+		x=Math.random()*6;
+		y=Math.random()*-6;
+	}
+
+	if(gg+xx+rr>=600){
+		if(xx<=0){
+		xx=Math.random()*6;
+		}
+		else{
+			xx=Math.random()*-6;
+		}
+	}
+	if(gg+xx-rr<=0){
+		if(xx<=0){
+		xx=Math.random()*6;
+		}
+		else{
+			xx=Math.random()*-6;
+		}
+	}
+	if(hh+yy+rr>=400){
+		if(yy<=0){
+		yy=Math.random()*6;
+		}
+		else{
+			yy=Math.random()*-6;
+		}	}
+	if(hh+yy-rr<=0){
+		if(yy<=0){
+		yy=Math.random()*6;
+		}
+		else{
+			yy=Math.random()*-6;
+		}
+	}
+
+
+
+	ctx.beginPath();
+	ctx.arc(g+x,h+y,r,0,2*Math.PI);
+	ctx.lineWidth=3;
+	ctx.fillStyle="rgb("+aa+","+bb+","+cc+")";
+	ctx.fill();
+	ctx.stroke();
+	g = g+x;
+	h = h+y;
+
+	if(g+x+r==gg+xx+rr){
+		x=Math.random()*6;
+		y=Math.random()*-6;
+	}
+
+	if(g+y+r==gg+yy+rr){
+		x=Math.random()*-6;
+		y=Math.random()*6;
+	}
+
+	if(g+x+r>=600){
+		if(x<=0){
+		x=Math.random()*6;
+		}
+		else{
+			x=Math.random()*-6;
+		}
+	}
+	if(g+x-r<=0){
+		if(x<=0){
+		x=Math.random()*6;
+		}
+		else{
+			x=Math.random()*-6;
+		}
+	}
+	if(h+y+r>=400){
+		if(y<=0){
+		y=Math.random()*6;
+		}
+		else{
+			y=Math.random()*-6;
+		}	}
+	if(h+y-r<=0){
+		if(y<=0){
+		y=Math.random()*6;
+		}
+		else{
+			y=Math.random()*-6;
+		}
+	}
+	if((g+x-gg-xx)*(g+x-gg-xx)+(h+y-hh-yy)*(h+y-hh-yy)<=(r+rr)*(r+rr)){
+		x=Math.random()*5;
+		y=Math.random()*-5;
+		xx=Math.random()*-5;
+		yy=Math.random()*5;
+	}
+}
+</script>
+</canvas>
+</body>
+</html>
